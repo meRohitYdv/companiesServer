@@ -2,24 +2,34 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('sampleTables', {
+    await queryInterface.createTable('company_details', {
       id: {
-        allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
-      },
-      firstName: {
         type: Sequelize.STRING
       },
-      lastName: {
+      name: {
         type: Sequelize.STRING
       },
-      email: {
+      tags: {
         type: Sequelize.STRING
       },
-      password: {
+      ceo: {
         type: Sequelize.STRING
+      },
+      cpi: {
+        type: Sequelize.FLOAT
+      },
+      cf: {
+        type: Sequelize.FLOAT
+      },
+      mau:{
+        type: Sequelize.FLOAT
+      },
+      roic:{
+        type: Sequelize.FLOAT
+      },
+      score:{
+        type: Sequelize.FLOAT
       },
       createdAt: {
         allowNull: false,
@@ -32,6 +42,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('sampleTables');
+    await queryInterface.dropTable('company_details');
   }
 };
