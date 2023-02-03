@@ -1,5 +1,7 @@
-const Company = (require('../../database/models')).company_details;
+const {getByCategory, updateCompanyDetails} = require('../controllers/companies');
+const router = require('express').Router();
 
-const getByCategory((req, res)=>{
-    const result = await Company.findAll();
-});
+router.get('/:sector',getByCategory);
+router.put('/:id', updateCompanyDetails);
+
+module.exports = router;

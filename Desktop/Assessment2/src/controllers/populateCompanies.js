@@ -24,7 +24,8 @@ module.exports = async (req, res) => {
       id: responseById.id,
       name: responseById.name,
       ceo: responseById.ceo,
-      tags: responseById.tags[0]
+      tags: responseById.tags[0],
+      sector: sector
     };
 
     const performanceObject = responseBySector.find(element=>element.companyId===newEntry.id).performanceIndex;
@@ -41,8 +42,8 @@ module.exports = async (req, res) => {
 };
 
 // company.destroy({
-//   where: {},
-//   truncate: true
+//   where:{},
+//   delete: true
 // });
 
 
