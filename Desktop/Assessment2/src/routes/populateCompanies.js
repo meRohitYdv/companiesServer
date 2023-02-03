@@ -4,6 +4,6 @@ const populateCompanies = require('../controllers/populateCompanies');
 
 
 router.post('/', populateCompanies);
-  
+
 
 module.exports = router;

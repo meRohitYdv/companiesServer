@@ -16,10 +16,10 @@ module.exports = async (req, res) => {
 
     const id = element[0];
     const sector = element[1];
-    
+
     const responseById = (await axios.get(`http://54.167.46.10/company/${id}`)).data;
     const responseBySector = (await axios.get(`http://54.167.46.10/sector?name=${sector}`)).data;
-    
+
     const newEntry = {
       id: responseById.id,
       name: responseById.name,
@@ -28,7 +28,7 @@ module.exports = async (req, res) => {
       sector: sector
     };
 
-    const performanceObject = responseBySector.find(element=>element.companyId===newEntry.id).performanceIndex;
+    const performanceObject = responseBySector.find(element => element.companyId === newEntry.id).performanceIndex;
 
     newEntry.cpi = Number(performanceObject[0].value);
     newEntry.cf = Number(performanceObject[0].value);
@@ -41,10 +41,7 @@ module.exports = async (req, res) => {
   });
 };
 
-// company.destroy({
-//   where:{},
-//   delete: true
-// });
+
 
 
 
