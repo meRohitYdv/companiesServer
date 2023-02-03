@@ -10,6 +10,9 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
+      sector: {
+        type: Sequelize.STRING
+      },
       tags: {
         type: Sequelize.STRING
       },
