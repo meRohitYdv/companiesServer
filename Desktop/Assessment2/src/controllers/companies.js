@@ -1,12 +1,7 @@
-const Company = (require('../../database/models')).company_details;
+const {getBySector, updateDetails} = require('../services/companies');
 
 module.exports.getByCategory = async (req, res)=>{
-  let result = await Company.findAll({
-    where:{
-      sector: req.params.sector
-    },
-    attributes: ['id', 'name', 'ceo', 'score']
-  });
+  let result = await getBySector(req.params.sector);
   
   result = result.map((element)=>{
     return element.dataValues;
@@ -20,4 +15,7 @@ module.exports.getByCategory = async (req, res)=>{
   res.status(200).send(result);
 };
 
-
+module.exports.updateCompanyDetails = async (req, res)=>{
+  const result = await updateDetails(req.body, req.params.id);
+  res.status(200).send(`${result[0]} comapany(ies) updated.`);
+};
